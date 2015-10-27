@@ -7,10 +7,10 @@ sudo apt-get install newsbeuter links mplayer calibre alpine python-pip python-d
 sudo pip install psutil python-uinput
 ```
 
-You will also need the kernel headers for the kernel that you are running. For example if you are running 3.18 which is currently on Debian Wheezy.
+You will also need the kernel headers for the kernel that you are running. For example if you are running 3.18 which is currently on Debian Wheezy. Also make sure if you do an apt-get command with wildcards you use bash.
 
 ```bash
-sudo apt-get install linux-headers-3.18*
+sudo apt-get install linux-headers-3.18.0-trunk-*
 ```
 
 ## Other Prerequisites  
