@@ -151,5 +151,4 @@ def processmenu(menu, parent=None):
 processmenu(menu_data)
 curses.endwin() # Exits the cursers menu
 os.system('touch nohup.out && rm nohup.out') # Remove the nohup output, fix for sisuation where no program was run
-#subprocess.Popen(["nohup","sudo","python","viinputdaemon.py","zsh","&"])
 os.system('clear')

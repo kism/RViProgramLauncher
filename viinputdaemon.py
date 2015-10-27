@@ -222,7 +222,7 @@ def F8(inProgram):
 				])
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Quit'
 
-# Main Program, is there a main method in python?
+# Main Program
 print termcolour.PINK + '~ Daemon initialising ~' + termcolour.WHITE
 
 # Check if program was run with an arguement
