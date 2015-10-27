@@ -281,6 +281,11 @@ ser = serial.Serial('/dev/ttyUSB0', 115200, timeout = 1)
 print termcolour.GREEN + 'Serial device opened:' + termcolour.WHITE, ser.name
 
 # Mad Hacks go here
+if program == 'newsbeuter':
+	time.sleep(2.0)
+	device.emit_click(uinput.KEY_R)
+	time.sleep(3.0)
+	device.emit_click(uinput.KEY_ENTER)
 
 # Polling for input
 while 1:

@@ -130,6 +130,7 @@ def processmenu(menu, parent=None):
 			exitmenu = True
 
 # Main program
+os.system('touch ~/rss.txt')
 processmenu(menu_data)
 curses.endwin() # Exits the cursers menu
 os.system('touch nohup.out && rm nohup.out') # Fix for sisuation where no program was run, remove the nohup output
