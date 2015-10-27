@@ -1,10 +1,1 @@
-*.txt
-trash/example_launcher.py
-trash/SerialBrailler.py
-trash/killthings.sh
-trash/pathbackup
-trash/Keylogger.py
-trash/example.py
-*.pyc
-!You fuckwit.lnk
-*.lnk
+trash/*
