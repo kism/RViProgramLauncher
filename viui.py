@@ -3,7 +3,7 @@
 # Based on: http://blog.skeltonnetworks.com/2010/03/python-curses-custom-menu/
 # by Matthew Bennett with changes by Andrew Scheller
 # A bunch of changes and optimisations for speakup done by Kieran Gee
-# No idea what public liscense ¯\_(ツ)_/¯
+# No idea what license, probably compatable with MIT ¯\_(ツ)_/¯
 
 import time
 import curses
