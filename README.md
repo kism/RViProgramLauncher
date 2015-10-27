@@ -1,9 +1,9 @@
 # VI Program Launcher
 
-## Install Prerequisites 
+## Install Dependencies  
 
 ```bash
-sudo apt-get install newsbeuter links mplayer calibre alpine python-pip
+sudo apt-get install newsbeuter links mplayer calibre alpine python-pip python-dev
 sudo pip install psutil python-uinput
 ```
 
@@ -41,3 +41,13 @@ To change sudo to not ask for a password use visudo to edit, the entry you need 
 sudo visudo
 <your username> ALL = NOPASSWD : ALL
 ```
+
+## Simulating the serial input device
+
+The serial connection will need to be 115200 baud, No Parity, 8 Data Bits, 1 Stop Bit, No Flow control
+
+Over serial send values 129 - 136, you can use any program that can output the correct bits
+
+On windows you can use [Realterm](http://realterm.sourceforge.net/index.html#downloads_Download)
+
+On linux you can use Minicom
