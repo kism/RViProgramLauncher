@@ -16,10 +16,10 @@ curses.noecho()
 curses.cbreak() 
 curses.start_color()
 screen.keypad(1)
-curses.curs_set(0) #fix issues with espeakup
+curses.curs_set(0) # try to fix issues with espeakup
 
 # Highlighting
-curses.init_pair(1,curses.COLOR_WHITE, curses.COLOR_BLACK) 
+curses.init_pair(1,curses.COLOR_WHITE, curses.COLOR_BLACK) # fix issues with espeakup
 h = curses.color_pair(1) 
 n = curses.A_NORMAL 
 
@@ -53,7 +53,7 @@ menu_data = {
 	
 	{ 'title': "Web Browser", 'type': COMMAND, 'command': 'links' },
 	
-	{ 'title': "zsh", 'type': COMMAND, 'command': 'zsh' },
+	 { 'title': "zsh", 'type': COMMAND, 'command': 'zsh' }, # may have issues
 
 	{ 'title': "Open Help", 'type': COMMAND, 'command': 'cmatrix' },
 	
@@ -81,13 +81,13 @@ def runmenu(menu, parent):
 	oldpos=None
 	x = None 
 
-	#While enter key is not pressed
+	# While enter key is not pressed
 	while x !=ord('\n'):
-		os.system("sudo pkill -f python\ inputdaemon"); #Move this somewhere nicer
+		os.system("sudo pkill -f python\ viinputdaemon"); # Move this somewhere nicer
 		if pos != oldpos:
 			oldpos = pos
 			screen.addstr(2,2, menu['title'], curses.A_STANDOUT) # Title for this menu
-			screen.addstr(4,2, menu['subtitle'], curses.A_BOLD) #Subtitle for this menu
+			screen.addstr(4,2, menu['subtitle'], curses.A_BOLD) # Subtitle for this menu
 
 		# Display menu, pos is highlighted
 		for index in range(optioncount):
@@ -130,20 +130,20 @@ def processmenu(menu, parent=None):
 		elif menu['options'][getin]['type'] == COMMAND:
 			curses.def_prog_mode()	# save curent curses environment
 			os.system('reset')
-			screen.clear() #clears previous screen
+			screen.clear() # clears previous screen
 			if 'newsbeuter' in menu['options'][getin]['command']:
 				subprocess.Popen(["nohup","sudo","python","viinputdaemon.py","newsbeuter","&"])
 			else: 
 				subprocess.Popen(["nohup","sudo","python","viinputdaemon.py",menu['options'][getin]['command'],"&"])
 			os.system(menu['options'][getin]['command']) # run the command
-			screen.clear() #clears previous screen on key press and updates display based on pos
+			screen.clear() # clears previous screen on key press and updates display based on pos
 			curses.reset_prog_mode() # reset to 'current' curses environment
 			curses.curs_set(1)		 # reset doesn't do this right
 			curses.curs_set(0)
 		elif menu['options'][getin]['type'] == MENU:
-			screen.clear() #clears previous screen on key press and updates display based on pos
+			screen.clear() # clears previous screen on key press and updates display based on pos
 			processmenu(menu['options'][getin], menu) # display the submenu
-			screen.clear() #clears previous screen on key press and updates display based on pos
+			screen.clear() # clears previous screen on key press and updates display based on pos
 		elif menu['options'][getin]['type'] == EXITMENU:
 			exitmenu = True
 
@@ -151,4 +151,5 @@ def processmenu(menu, parent=None):
 processmenu(menu_data)
 curses.endwin() # Exits the cursers menu
 os.system('touch nohup.out && rm nohup.out') # Remove the nohup output, fix for sisuation where no program was run
+#subprocess.Popen(["nohup","sudo","python","viinputdaemon.py","zsh","&"])
 os.system('clear')

@@ -216,8 +216,10 @@ def F8(inProgram):
 		device.emit_click(uinput.KEY_Q)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Quit'
 	if inProgram == 'zsh':
-		device.emit_click(uinput.KEY_LEFTCTRL)
-		device.emit_click(uinput.KEY_D)
+		device.emit_combo([
+				uinput.KEY_LEFTCTRL,
+				uinput.KEY_D,
+				])
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Quit'
 
 # Main Program, is there a main method in python?
