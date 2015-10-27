@@ -66,10 +66,7 @@ menu_data = {
 	]},
 ]}
 
-
-
-
-# Main menu loop
+# Menu loop
 def runmenu(menu, parent):
 	if parent is None:
 		lastoption = "Exit"
@@ -107,16 +104,6 @@ def runmenu(menu, parent):
 		# Check user input
 		if x >= ord('1') and x <= ord(str(optioncount+1)):
 			pos = x - ord('0') - 1 # If the user presses a number
-		# elif x == 258: # Change pos based on down arrow
-		# 	if pos < optioncount:
-		# 		pos += 1
-		# 	else: 
-		# 		pos = 0
-		# elif x == 259: # Change pos based on down arrow
-		# 	if pos > 0:
-		# 		pos += -1
-		# 	else: 
-		# 		pos = optioncount
 	return pos # returnposition of curser
 
 # This function calls showmenu and then acts on the selected item
@@ -128,27 +115,34 @@ def processmenu(menu, parent=None):
 		if getin == optioncount:
 			exitmenu = True
 		elif menu['options'][getin]['type'] == COMMAND:
-			curses.def_prog_mode()	# save curent curses environment
+			# Prepare for command
+			curses.def_prog_mode() # Save menu status
 			os.system('reset')
-			screen.clear() # clears previous screen
+			screen.clear()
+			
+			# Run input daemon in background
 			if 'newsbeuter' in menu['options'][getin]['command']:
-				subprocess.Popen(["nohup","sudo","python","viinputdaemon.py","newsbeuter","&"])
+				subprocess.Popen(["nohup","sudo","python","viinputdaemon.py","newsbeuter","&"]) 
 			else: 
-				subprocess.Popen(["nohup","sudo","python","viinputdaemon.py",menu['options'][getin]['command'],"&"])
-			os.system(menu['options'][getin]['command']) # run the command
-			screen.clear() # clears previous screen on key press and updates display based on pos
-			curses.reset_prog_mode() # reset to 'current' curses environment
-			curses.curs_set(1)		 # reset doesn't do this right
+				subprocess.Popen(["nohup","sudo","python","viinputdaemon.py",menu['options'][getin]['command'],"&"]) 
+			
+			# Run Program
+			os.system(menu['options'][getin]['command'])
+			
+			# Cleanup
+			screen.clear() 
+			curses.reset_prog_mode() 
+			curses.curs_set(1)		 
 			curses.curs_set(0)
 		elif menu['options'][getin]['type'] == MENU:
-			screen.clear() # clears previous screen on key press and updates display based on pos
+			screen.clear() 
 			processmenu(menu['options'][getin], menu) # display the submenu
-			screen.clear() # clears previous screen on key press and updates display based on pos
+			screen.clear() 
 		elif menu['options'][getin]['type'] == EXITMENU:
 			exitmenu = True
 
 # Main program
 processmenu(menu_data)
 curses.endwin() # Exits the cursers menu
-os.system('touch nohup.out && rm nohup.out') # Remove the nohup output, fix for sisuation where no program was run
+os.system('touch nohup.out && rm nohup.out') # Fix for sisuation where no program was run, remove the nohup output
 os.system('clear')
