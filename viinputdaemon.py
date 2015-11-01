@@ -49,7 +49,9 @@ def F1(inProgram):
 			uinput.KEY_C,
 			])
 		device.emit_click(uinput.KEY_C)
+		time.sleep(0.01)
 		device.emit_click(uinput.KEY_D)
+		time.sleep(0.01)
 		device.emit_click(uinput.KEY_ENTER)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Home'
 
@@ -78,9 +80,13 @@ def F2(inProgram):
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Go To'
 	if inProgram == 'zsh':
 		device.emit_click(uinput.KEY_P)
+		time.sleep(0.01)
 		device.emit_click(uinput.KEY_L)
+		time.sleep(0.01)
 		device.emit_click(uinput.KEY_A)
+		time.sleep(0.01)
 		device.emit_click(uinput.KEY_Y)
+		time.sleep(0.01)
 		device.emit_click(uinput.KEY_SPACE)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'play '
 
