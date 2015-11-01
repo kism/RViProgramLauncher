@@ -15,7 +15,24 @@ class termcolour:
     WHITE = '\033[0m'
 
 # Figure out what to do on the keypresses
-def F1(inProgram):
+def sendLetter(letter): #
+	global caps
+	if caps == 0:
+		device.emit_click(getattr(uinput,letter))
+	if caps == 1:
+		caps = 0
+		device.emit_combo([
+			uinput.KEY_LEFTSHIFT,
+			getattr(uinput,letter),
+			])
+	if caps == 2:
+			device.emit_combo([
+			uinput.KEY_LEFTSHIFT,
+			getattr(uinput,letter),
+			])
+	print termcolour.GREEN + 'Sent ASCII Char!' + termcolour.WHITE
+
+def f1(inProgram):
 	print termcolour.PINK + 'F1 Pressed' + termcolour.WHITE
 	print termcolour.GREEN + 'Program:' + termcolour.WHITE, inProgram
 	if inProgram == 'nano':  # Open Help
@@ -55,7 +72,7 @@ def F1(inProgram):
 		device.emit_click(uinput.KEY_ENTER)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Home'
 
-def F2(inProgram):
+def f2(inProgram):
 	print termcolour.PINK + 'F2 Pressed' + termcolour.WHITE
 	print termcolour.GREEN + 'Program:' + termcolour.WHITE, inProgram
 	if inProgram == 'nano':  # Open File
@@ -90,7 +107,7 @@ def F2(inProgram):
 		device.emit_click(uinput.KEY_SPACE)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'play '
 
-def F3(inProgram):
+def f3(inProgram):
 	print termcolour.PINK + 'F3 Pressed' + termcolour.WHITE
 	print termcolour.GREEN + 'Program:' + termcolour.WHITE, inProgram
 	if inProgram == 'nano': # Save file
@@ -109,7 +126,7 @@ def F3(inProgram):
 		device.emit_click(uinput.KEY_F9)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Menu'
 
-def F4(inProgram):
+def f4(inProgram):
 	print termcolour.PINK + 'F4 Pressed' + termcolour.WHITE
 	print termcolour.GREEN + 'Program:' + termcolour.WHITE, inProgram
 	if inProgram == 'nano': # Cancel
@@ -133,7 +150,7 @@ def F4(inProgram):
 			])
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Cancel'
 
-def F5(inProgram):
+def f5(inProgram):
 	print termcolour.PINK + 'F5 Pressed' + termcolour.WHITE
 	print termcolour.GREEN + 'Program:' + termcolour.WHITE, inProgram
 	if inProgram == 'nano': # Cut
@@ -149,7 +166,7 @@ def F5(inProgram):
 		device.emit_click(uinput.KEY_J)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Journal'
 
-def F6(inProgram):
+def f6(inProgram):
 	print termcolour.PINK + 'F6 Pressed' + termcolour.WHITE
 	print termcolour.GREEN + 'Program:' + termcolour.WHITE, inProgram
 	if inProgram == 'nano': # Uncut
@@ -165,7 +182,7 @@ def F6(inProgram):
 		device.emit_click(uinput.KEY_A)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Address'
 
-def F7(inProgram):
+def f7(inProgram):
 	print termcolour.PINK + 'F7 Pressed' + termcolour.WHITE
 	print termcolour.GREEN + 'Program:' + termcolour.WHITE, inProgram
 	if inProgram == 'nano': # Find
@@ -184,7 +201,7 @@ def F7(inProgram):
 		device.emit_click(uinput.KEY_SLASH)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Find'
 
-def F8(inProgram):
+def f8(inProgram):
 	print termcolour.PINK + 'F8 Pressed' + termcolour.WHITE
 	print termcolour.GREEN + 'Program:' + termcolour.WHITE, inProgram
 	if inProgram == 'nano': # Exit menu or program
@@ -268,6 +285,12 @@ device = uinput.Device([
 	uinput.KEY_LEFTCTRL,
 	uinput.KEY_LEFTALT,
 	uinput.KEY_LEFTSHIFT,
+	uinput.KEY_BACKSPACE,
+	uinput.KEY_UP,
+	uinput.KEY_LEFT,
+	uinput.KEY_RIGHT,
+	uinput.KEY_DOWN,
+	uinput.KEY_ESC,
 	uinput.KEY_F1,
 	uinput.KEY_F2,
 	uinput.KEY_F3,
@@ -287,6 +310,7 @@ ser = serial.Serial('/dev/ttyUSB0', 115200, timeout = 1)
 print termcolour.GREEN + 'Serial device opened:' + termcolour.WHITE, ser.name
 
 # Mad Hacks go here
+caps = 0
 if program == 'newsbeuter':
 	time.sleep(2.0)
 	device.emit_click(uinput.KEY_R)
@@ -299,20 +323,103 @@ while 1:
 	print 'Buffer Queue =', ser.inWaiting()
 	print 'Read =', sbuf
 	
+	# Function Keys
 	if sbuf == '\x81': #129
-		F1(program)
+		f1(program)
 	if sbuf == '\x82': #130
-		F2(program)
+		f2(program)
 	if sbuf == '\x83': #131
-		F3(program)
+		f3(program)
 	if sbuf == '\x84': #132
-		F4(program)
+		f4(program)
 	if sbuf == '\x85': #133
-		F5(program)
+		f5(program)
 	if sbuf == '\x86': #134
-		F6(program)
+		f6(program)
 	if sbuf == '\x87': #135
-		F7(program)
+		f7(program)
 	if sbuf == '\x88': #136
-		F8(program)
+		f8(program)
+	
+	# Regular Keys
+	if sbuf == '\x20':
+		sendLetter('KEY_A')
+	if sbuf == '\x30':
+		sendLetter('KEY_B')
+	if sbuf == '\x24':
+		sendLetter('KEY_C')
+	if sbuf == '\x26':
+		sendLetter('KEY_D')
+	if sbuf == '\x22':
+		sendLetter('KEY_E')
+	if sbuf == '\x34':
+		sendLetter('KEY_F')
+	if sbuf == '\x36':
+		sendLetter('KEY_G')
+	if sbuf == '\x32':
+		sendLetter('KEY_H')
+	if sbuf == '\x14':
+		sendLetter('KEY_I')
+	if sbuf == '\x16':
+		sendLetter('KEY_J')
+	if sbuf == '\x28':
+		sendLetter('KEY_K')
+	if sbuf == '\x38':
+		sendLetter('KEY_L')
+	if sbuf == '\x2C':
+		sendLetter('KEY_M')
+	if sbuf == '\x2E':
+		sendLetter('KEY_N')
+	if sbuf == '\x2A':
+		sendLetter('KEY_O')
+	if sbuf == '\x3C':
+		sendLetter('KEY_P')
+	if sbuf == '\x3E':
+		sendLetter('KEY_Q')
+	if sbuf == '\x3A':
+		sendLetter('KEY_R')
+	if sbuf == '\x1C':
+		sendLetter('KEY_S')
+	if sbuf == '\x1E':
+		sendLetter('KEY_T')
+	if sbuf == '\x29':
+		sendLetter('KEY_U')
+	if sbuf == '\x39':
+		sendLetter('KEY_V')
+	if sbuf == '\x17':
+		sendLetter('KEY_W')
+	if sbuf == '\x2D':
+		sendLetter('KEY_X')
+	if sbuf == '\x2F':
+		sendLetter('KEY_Y')
+	if sbuf == '\x2B':
+		sendLetter('KEY_Z')
+	if sbuf == '\x10':
+		device.emit_click(uinput.KEY_COMMA)
+	if sbuf == '\x13':
+		device.emit_click(uinput.KEY_DOT)
+	if sbuf == '\x60':
+		device.emit_click(uinput.KEY_SPACE)
+		caps = 0
 
+	# Special Keys
+	if sbuf == '\x40':
+		device.emit_click(uinput.KEY_ESC)
+	if sbuf == '\x41':
+		device.emit_click(uinput.KEY_UP)
+	if sbuf == '\x42':
+		device.emit_click(uinput.KEY_LEFT)
+	if sbuf == '\x43':
+		device.emit_click(uinput.KEY_RIGHT)
+	if sbuf == '\x44':
+		device.emit_click(uinput.KEY_DOWN)
+	if sbuf == '\x45':
+		device.emit_click(uinput.KEY_ENTER)
+	if sbuf == '\x46':
+		device.emit_click(uinput.KEY_BACKSPACE)
+	if sbuf == '\x01':
+		if caps > 1:
+			caps = 2
+		else:
+			caps = caps + 1
+		print termcolour.GREEN + 'Caps:' + termcolour.WHITE, caps
