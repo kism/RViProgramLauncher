@@ -45,8 +45,9 @@ menu_data = {
 	{ 'title': "Web Browser", 'type': COMMAND, 'command': 'links' },
 	{ 'title': "zsh", 'type': COMMAND, 'command': 'zsh' }, # may have issues
 	{ 'title': "Open Help", 'type': COMMAND, 'command': 'cmatrix' },
-	{ 'title': "Shutdown Computer", 'type': MENU, 'subtitle': "Select shutdown option",
+	{ 'title': "Options & Shutdown", 'type': MENU, 'subtitle': "Select shutdown option",
 	'options': [
+		{'title': "Update System Packages", 'type': COMMAND, 'command': 'sudo apt-get update && sudo apt-get upgrade' },
 		{'title': "Shutdown", 'type': COMMAND, 'command': 'sudo shutdown -h now' },
 		{'title': "Restart", 'type': COMMAND, 'command': 'sudo shutdown -r now' },
 	]},
