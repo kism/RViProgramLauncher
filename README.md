@@ -3,7 +3,7 @@
 ## Install Dependencies  
 
 ```bash
-sudo apt-get install newsbeuter links mplayer calibre alpine python-pip python-dev libudev-dev
+sudo apt-get install newsbeuter links mplayer python-pip python-dev libudev-dev zsh alpine newsbeuter links frotz calibre
 sudo pip install psutil python-uinput
 ```
 
