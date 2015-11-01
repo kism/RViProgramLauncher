@@ -108,12 +108,6 @@ def F3(inProgram):
 	if inProgram == 'links':
 		device.emit_click(uinput.KEY_F9)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Menu'
-	if inProgram == 'zsh':
-		device.emit_combo([
-			uinput.KEY_LEFTCTRL,
-			uinput.KEY_C,
-			])
-		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Cancel'
 
 def F4(inProgram):
 	print termcolour.PINK + 'F4 Pressed' + termcolour.WHITE
@@ -131,6 +125,12 @@ def F4(inProgram):
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Back'
 	if inProgram == 'links':
 		device.emit_click(uinput.KEY_ESC)
+		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Cancel'
+	if inProgram == 'zsh':
+		device.emit_combo([
+			uinput.KEY_LEFTCTRL,
+			uinput.KEY_C,
+			])
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Cancel'
 
 def F5(inProgram):
