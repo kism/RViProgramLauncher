@@ -58,51 +58,51 @@ def sendLetter(letter):
 def f1(inProgram):
 	print termcolour.PINK + 'F1 Pressed' + termcolour.WHITE
 	print termcolour.GREEN + 'Program:' + termcolour.WHITE, inProgram
-	if inProgram == 'viui':  # Open Help
+	if inProgram == 'viui': # Open menu item 1
 		device.emit_click(uinput.KEY_1)
 		time.sleep(0.01)
 		device.emit_click(uinput.KEY_ENTER)
 		time.sleep(0.01)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'F1'
-	if inProgram == 'nano':  # Open Help
+	if inProgram == 'nano': # Open Help
 		device.emit_combo([
 			uinput.KEY_LEFTCTRL,
 			uinput.KEY_G,
 			])
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Help'
-	if inProgram == 'newsbeuter':
+	if inProgram == 'newsbeuter': # Open Help
 		device.emit_combo([
 			uinput.KEY_LEFTSHIFT,
 			uinput.KEY_SLASH,
 			])
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Help'
-	if inProgram == 'alpine':
+	if inProgram == 'alpine': # Open Help
 		device.emit_combo([
 			uinput.KEY_LEFTSHIFT,
 			uinput.KEY_SLASH,
 			])
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Help'
-	if inProgram == 'links':
+	if inProgram == 'links': # Open Help
 		device.emit_click(uinput.KEY_F9)
 		time.sleep(0.1)
 		device.emit_click(uinput.KEY_H)
 		time.sleep(0.1)
 		device.emit_click(uinput.KEY_M)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Help'
-	if inProgram == 'irssi':  # Open Help
+	if inProgram == 'irssi': # Open Help
 		device.emit_click(uinput.KEY_SLASH)
 		time.sleep(0.01)
-		device.emit_click(uinput.KEY_Q)
+		device.emit_click(uinput.KEY_H)
 		time.sleep(0.01)
-		device.emit_click(uinput.KEY_U)
+		device.emit_click(uinput.KEY_E)
 		time.sleep(0.01)
-		device.emit_click(uinput.KEY_I)
+		device.emit_click(uinput.KEY_L)
 		time.sleep(0.01)
-		device.emit_click(uinput.KEY_T)
+		device.emit_click(uinput.KEY_P)
 		time.sleep(0.01)
 		device.emit_click(uinput.KEY_ENTER)										
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Help'
-	if inProgram == 'zsh':
+	if inProgram == 'zsh': # Go to home directory
 		device.emit_combo([
 			uinput.KEY_LEFTCTRL,
 			uinput.KEY_C,
@@ -117,13 +117,13 @@ def f1(inProgram):
 def f2(inProgram):
 	print termcolour.PINK + 'F2 Pressed' + termcolour.WHITE
 	print termcolour.GREEN + 'Program:' + termcolour.WHITE, inProgram
-	if inProgram == 'viui':  # Menu Select
+	if inProgram == 'viui': # Open menu item 2
 		device.emit_click(uinput.KEY_2)
 		time.sleep(0.01)
 		device.emit_click(uinput.KEY_ENTER)
 		time.sleep(0.01)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'F2'
-	if inProgram == 'nano':  # Open File
+	if inProgram == 'nano': # Open File
 		device.emit_combo([
 			uinput.KEY_LEFTCTRL,
 			uinput.KEY_R,
@@ -134,16 +134,16 @@ def f2(inProgram):
 			uinput.KEY_T,
 			])
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Open File'
-	if inProgram == 'newsbeuter':
+	if inProgram == 'newsbeuter': # Open Entry 
 		device.emit_click(uinput.KEY_ENTER)
-		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Open'
-	if inProgram == 'alpine':
+		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Open Entry'
+	if inProgram == 'alpine': # Open Index
 		device.emit_click(uinput.KEY_I)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Index'
-	if inProgram == 'links':
+	if inProgram == 'links': # Go to
 		device.emit_click(uinput.KEY_G)
-		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Go To'
-	if inProgram == 'irssi':  # Connect
+		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Go to'
+	if inProgram == 'irssi': # Connect
 		device.emit_click(uinput.KEY_SLASH)
 		time.sleep(0.01)
 		device.emit_click(uinput.KEY_C)
@@ -162,7 +162,7 @@ def f2(inProgram):
 		time.sleep(0.01)
 		device.emit_click(uinput.KEY_SPACE)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Connect'
-	if inProgram == 'zsh':
+	if inProgram == 'zsh': # Use the mplayer alias
 		device.emit_click(uinput.KEY_P)
 		time.sleep(0.01)
 		device.emit_click(uinput.KEY_L)
@@ -172,12 +172,12 @@ def f2(inProgram):
 		device.emit_click(uinput.KEY_Y)
 		time.sleep(0.01)
 		device.emit_click(uinput.KEY_SPACE)
-		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'play '
+		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Play '
 
 def f3(inProgram):
 	print termcolour.PINK + 'F3 Pressed' + termcolour.WHITE
 	print termcolour.GREEN + 'Program:' + termcolour.WHITE, inProgram
-	if inProgram == 'viui':  # Menu Select
+	if inProgram == 'viui': # Open menu item 3
 		device.emit_click(uinput.KEY_3)
 		time.sleep(0.01)
 		device.emit_click(uinput.KEY_ENTER)
@@ -189,16 +189,16 @@ def f3(inProgram):
 			uinput.KEY_O,
 			])
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Save File'
-	if inProgram == 'newsbeuter':
+	if inProgram == 'newsbeuter': # Save entry to file
 		device.emit_click(uinput.KEY_S)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Save Story'
-	if inProgram == 'alpine':
+	if inProgram == 'alpine': # Compose
 		device.emit_click(uinput.KEY_C)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Compose'
-	if inProgram == 'links':
+	if inProgram == 'links': # Open menu
 		device.emit_click(uinput.KEY_F9)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Menu'
-	if inProgram == 'irssi':  # Join
+	if inProgram == 'irssi': # Join
 		device.emit_click(uinput.KEY_SLASH)
 		time.sleep(0.01)
 		device.emit_click(uinput.KEY_J)
@@ -215,7 +215,7 @@ def f3(inProgram):
 def f4(inProgram):
 	print termcolour.PINK + 'F4 Pressed' + termcolour.WHITE
 	print termcolour.GREEN + 'Program:' + termcolour.WHITE, inProgram
-	if inProgram == 'viui':  # Menu Select
+	if inProgram == 'viui': # Open menu item 4
 		device.emit_click(uinput.KEY_4)
 		time.sleep(0.01)
 		device.emit_click(uinput.KEY_ENTER)
@@ -227,15 +227,15 @@ def f4(inProgram):
 			uinput.KEY_C,
 			])
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Cancel'
-	if inProgram == 'alpine':
+	if inProgram == 'alpine': # Back
 		device.emit_click(uinput.KEY_M)
 		time.sleep(0.1)
 		device.emit_click(uinput.KEY_COMMA)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Back'
-	if inProgram == 'links':
+	if inProgram == 'links': # Cancel
 		device.emit_click(uinput.KEY_ESC)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Cancel'
-	if inProgram == 'irssi':  # Part
+	if inProgram == 'irssi': # Part
 		device.emit_click(uinput.KEY_SLASH)
 		time.sleep(0.01)
 		device.emit_click(uinput.KEY_P)
@@ -248,7 +248,7 @@ def f4(inProgram):
 		time.sleep(0.01)
 		device.emit_click(uinput.KEY_ENTER)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Part'
-	if inProgram == 'zsh':
+	if inProgram == 'zsh': # Cancel
 		device.emit_combo([
 			uinput.KEY_LEFTCTRL,
 			uinput.KEY_C,
@@ -258,7 +258,7 @@ def f4(inProgram):
 def f5(inProgram):
 	print termcolour.PINK + 'F5 Pressed' + termcolour.WHITE
 	print termcolour.GREEN + 'Program:' + termcolour.WHITE, inProgram
-	if inProgram == 'viui':  # Menu Select
+	if inProgram == 'viui': # Open menu item 5
 		device.emit_click(uinput.KEY_5)
 		time.sleep(0.01)
 		device.emit_click(uinput.KEY_ENTER)
@@ -270,13 +270,13 @@ def f5(inProgram):
 			uinput.KEY_K,
 			])
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Cut'
-	if inProgram == 'newsbeuter':
+	if inProgram == 'newsbeuter': # Reload
 		device.emit_click(uinput.KEY_R)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Reload'
-	if inProgram == 'alpine':
+	if inProgram == 'alpine': # Journal
 		device.emit_click(uinput.KEY_J)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Journal'
-	if inProgram == 'irssi':  # Query
+	if inProgram == 'irssi': # Query
 		device.emit_click(uinput.KEY_SLASH)
 		time.sleep(0.01)
 		device.emit_click(uinput.KEY_Q)
@@ -295,7 +295,7 @@ def f5(inProgram):
 def f6(inProgram):
 	print termcolour.PINK + 'F6 Pressed' + termcolour.WHITE
 	print termcolour.GREEN + 'Program:' + termcolour.WHITE, inProgram
-	if inProgram == 'viui':  # Menu Select
+	if inProgram == 'viui': # Open menu item 6
 		device.emit_click(uinput.KEY_6)
 		time.sleep(0.01)
 		device.emit_click(uinput.KEY_ENTER)
@@ -307,13 +307,13 @@ def f6(inProgram):
 			uinput.KEY_U,
 			])
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Uncut'
-	if inProgram == 'newsbeuter':
+	if inProgram == 'newsbeuter': # Open next unread
 		uinput.KEY_N,
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Next Unread'
-	if inProgram == 'alpine':
+	if inProgram == 'alpine': # Address
 		device.emit_click(uinput.KEY_A)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Address'
-	if inProgram == 'irssi':  # Previous window
+	if inProgram == 'irssi': # Previous window
 		device.emit_combo([
 				uinput.KEY_CTRL,
 				uinput.KEY_P,
@@ -323,7 +323,7 @@ def f6(inProgram):
 def f7(inProgram):
 	print termcolour.PINK + 'F7 Pressed' + termcolour.WHITE
 	print termcolour.GREEN + 'Program:' + termcolour.WHITE, inProgram
-	if inProgram == 'viui':  # Menu Select
+	if inProgram == 'viui': # Open menu item 7
 		device.emit_click(uinput.KEY_7)
 		time.sleep(0.01)
 		device.emit_click(uinput.KEY_ENTER)
@@ -335,16 +335,16 @@ def f7(inProgram):
 			uinput.KEY_W,
 			])
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Find'
-	if inProgram == 'newsbeuter':
+	if inProgram == 'newsbeuter': # Open in browser
 		device.emit_click(uinput.KEY_O)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Open in Browser'
-	if inProgram == 'alpine':
+	if inProgram == 'alpine': # Setup email
 		device.emit_click(uinput.KEY_S)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Setup'
-	if inProgram == 'links':
+	if inProgram == 'links': # Find on page
 		device.emit_click(uinput.KEY_SLASH)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Find'
-	if inProgram == 'irssi':  # Next window
+	if inProgram == 'irssi': # Next window
 		device.emit_combo([
 				uinput.KEY_CTRL,
 				uinput.KEY_N,
@@ -354,7 +354,7 @@ def f7(inProgram):
 def f8(inProgram):
 	print termcolour.PINK + 'F8 Pressed' + termcolour.WHITE
 	print termcolour.GREEN + 'Program:' + termcolour.WHITE, inProgram
-	if inProgram == 'viui':  # Menu Select
+	if inProgram == 'viui': # Open menu item 8
 		device.emit_click(uinput.KEY_8)
 		time.sleep(0.01)
 		device.emit_click(uinput.KEY_ENTER)
@@ -366,29 +366,29 @@ def f8(inProgram):
 			uinput.KEY_X,
 			])
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Quit'
-	if inProgram == 'newsbeuter':
+	if inProgram == 'newsbeuter': # Quit
 		device.emit_click(uinput.KEY_Q)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Quit'
-	if inProgram == 'alpine':
+	if inProgram == 'alpine': # Quit
 		device.emit_click(uinput.KEY_Q)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Quit'
-	if inProgram == 'links':
+	if inProgram == 'links': # Quit
 		device.emit_click(uinput.KEY_Q)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Quit'
-	if inProgram == 'irssi':  # Quit
+	if inProgram == 'irssi': # Quit
 		device.emit_click(uinput.KEY_SLASH)
 		time.sleep(0.01)
-		device.emit_click(uinput.KEY_H)
+		device.emit_click(uinput.KEY_Q)
 		time.sleep(0.01)
-		device.emit_click(uinput.KEY_E)
+		device.emit_click(uinput.KEY_U)
 		time.sleep(0.01)
-		device.emit_click(uinput.KEY_L)
+		device.emit_click(uinput.KEY_I)
 		time.sleep(0.01)
-		device.emit_click(uinput.KEY_P)
+		device.emit_click(uinput.KEY_T)
 		time.sleep(0.01)
 		device.emit_click(uinput.KEY_ENTER)										
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Quit'	
-	if inProgram == 'zsh':
+	if inProgram == 'zsh': # Quit
 		device.emit_combo([
 				uinput.KEY_LEFTCTRL,
 				uinput.KEY_D,
@@ -503,7 +503,8 @@ while 1:
 	print 'Buffer Queue =', ser.inWaiting()
 	print 'Read =', sbuf
 	
-	# Function Keys, All values are in hex
+	# All values are in hex, not actuall ascii, lol python
+	# Function Keys, 
 	if sbuf == '\x81': #129
 		f1(program)
 	if sbuf == '\x82': #130
@@ -521,7 +522,7 @@ while 1:
 	if sbuf == '\x88': #136
 		f8(program)
 	
-	# Regular Keys, All values are in hex
+	# Regular Keys
 	if sbuf == '\x20':
 		sendLetter('KEY_A')
 	if sbuf == '\x30':
@@ -585,7 +586,7 @@ while 1:
 		caps = 0
 		numb = 0
 
-	# Special Keys, All values are in hex
+	# Special Keys
 	if sbuf == '\x40':
 		device.emit_click(uinput.KEY_ESC)
 	if sbuf == '\x41':
