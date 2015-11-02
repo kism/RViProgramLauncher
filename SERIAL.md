@@ -8,6 +8,17 @@ The serial connection will need to be 115200 baud, No Parity, 8 Data Bits, 1 Sto
 
 These characters are literal translations of Braille cells to the 6 least significant bits of a byte.
 
+```
+00123456
+
+ --- --- 
+| 1 | 4 |
+ --- --- 
+| 2 | 5 |
+ --- --- 
+| 3 | 6 |
+ --- --- 
+```
 Start at 00000000, End at 00111111
 
 ### Braille Modifier Characters
