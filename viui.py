@@ -144,5 +144,6 @@ os.system('clear')
 processmenu(menu_data)
 # Cleanup
 curses.endwin() # Exits the cursers menu
+os.system("sudo pkill -f python\ viinputdaemon"); 
 os.system('touch nohup.out && rm nohup.out') # Fix for sisuation where no program was run, remove the nohup output
 os.system('clear')
