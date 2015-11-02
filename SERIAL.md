@@ -8,6 +8,8 @@ The serial connection will need to be 115200 baud, No Parity, 8 Data Bits, 1 Sto
 
 These characters are literal translations of Braille cells to the 6 least significant bits of a byte.
 
+Start at 00000000, End at 00111111. Below is a Braille cell and the bits it represents in this standard.
+
 ```
 00123456
 
@@ -19,13 +21,13 @@ These characters are literal translations of Braille cells to the 6 least signif
 | 3 | 6 |
  --- --- 
 ```
-Start at 00000000, End at 00111111
+
 
 ### Braille Modifier Characters
 
 | Key / Mod   | Hex  | Binary   | Decimal |
 |-------------|------|----------|---------|
-| Capital Mod | 0x01 | 00000001 | 1       |
+| Capital Mod | 0x01 | 00000001 | 1       | 
 | Number Mod  | 0x0F | 00001111 | 15      |
 
 
