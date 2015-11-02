@@ -12,7 +12,6 @@ Start at 00000000, End at 00111111. Below is a Braille cell and the bits it repr
 
 ```
 00123456
-
  --- --- 
 | 1 | 4 |
  --- --- 
