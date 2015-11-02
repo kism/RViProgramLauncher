@@ -46,14 +46,14 @@ def sendLetter(letter):
 		if caps == 1:
 			caps = 0
 			device.emit_combo([
-				uinput.KEY_LEFTSHIFT,
-				getattr(uinput,letter),
-				])
+					uinput.KEY_LEFTSHIFT,
+					getattr(uinput,letter),
+					])
 		if caps == 2:
 				device.emit_combo([
-				uinput.KEY_LEFTSHIFT,
-				getattr(uinput,letter),
-				])
+					uinput.KEY_LEFTSHIFT,
+					getattr(uinput,letter),
+					])
 
 def f1(inProgram):
 	print termcolour.PINK + 'F1 Pressed' + termcolour.WHITE
