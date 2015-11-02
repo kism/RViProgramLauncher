@@ -89,6 +89,19 @@ def f1(inProgram):
 		time.sleep(0.1)
 		device.emit_click(uinput.KEY_M)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Help'
+	if inProgram == 'irssi':  # Open Help
+		device.emit_click(uinput.KEY_SLASH)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_Q)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_U)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_I)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_T)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_ENTER)										
+		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Help'
 	if inProgram == 'zsh':
 		device.emit_combo([
 			uinput.KEY_LEFTCTRL,
@@ -130,6 +143,25 @@ def f2(inProgram):
 	if inProgram == 'links':
 		device.emit_click(uinput.KEY_G)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Go To'
+	if inProgram == 'irssi':  # Connect
+		device.emit_click(uinput.KEY_SLASH)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_C)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_O)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_N)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_N)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_E)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_C)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_T)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_SPACE)
+		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Connect'
 	if inProgram == 'zsh':
 		device.emit_click(uinput.KEY_P)
 		time.sleep(0.01)
@@ -166,6 +198,19 @@ def f3(inProgram):
 	if inProgram == 'links':
 		device.emit_click(uinput.KEY_F9)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Menu'
+	if inProgram == 'irssi':  # Join
+		device.emit_click(uinput.KEY_SLASH)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_J)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_O)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_I)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_N)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_SPACE)
+		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Join'
 
 def f4(inProgram):
 	print termcolour.PINK + 'F4 Pressed' + termcolour.WHITE
@@ -190,6 +235,19 @@ def f4(inProgram):
 	if inProgram == 'links':
 		device.emit_click(uinput.KEY_ESC)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Cancel'
+	if inProgram == 'irssi':  # Part
+		device.emit_click(uinput.KEY_SLASH)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_P)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_A)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_R)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_T)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_ENTER)
+		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Part'
 	if inProgram == 'zsh':
 		device.emit_combo([
 			uinput.KEY_LEFTCTRL,
@@ -218,6 +276,21 @@ def f5(inProgram):
 	if inProgram == 'alpine':
 		device.emit_click(uinput.KEY_J)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Journal'
+	if inProgram == 'irssi':  # Query
+		device.emit_click(uinput.KEY_SLASH)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_Q)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_U)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_E)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_R)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_Y)
+		time.sleep(0.01)
+		device.emit_click(uinput.SPACE)
+		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Query'		
 
 def f6(inProgram):
 	print termcolour.PINK + 'F6 Pressed' + termcolour.WHITE
@@ -240,6 +313,12 @@ def f6(inProgram):
 	if inProgram == 'alpine':
 		device.emit_click(uinput.KEY_A)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Address'
+	if inProgram == 'irssi':  # Previous window
+		device.emit_combo([
+				uinput.KEY_CTRL,
+				uinput.KEY_P,
+				])
+		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Previous window'
 
 def f7(inProgram):
 	print termcolour.PINK + 'F7 Pressed' + termcolour.WHITE
@@ -265,6 +344,12 @@ def f7(inProgram):
 	if inProgram == 'links':
 		device.emit_click(uinput.KEY_SLASH)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Find'
+	if inProgram == 'irssi':  # Next window
+		device.emit_combo([
+				uinput.KEY_CTRL,
+				uinput.KEY_N,
+				])
+		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Next window'
 
 def f8(inProgram):
 	print termcolour.PINK + 'F8 Pressed' + termcolour.WHITE
@@ -290,6 +375,19 @@ def f8(inProgram):
 	if inProgram == 'links':
 		device.emit_click(uinput.KEY_Q)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Quit'
+	if inProgram == 'irssi':  # Quit
+		device.emit_click(uinput.KEY_SLASH)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_H)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_E)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_L)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_P)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_ENTER)										
+		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Quit'	
 	if inProgram == 'zsh':
 		device.emit_combo([
 				uinput.KEY_LEFTCTRL,
