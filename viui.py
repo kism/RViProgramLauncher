@@ -40,10 +40,10 @@ menu_data = {
 		{'title': "irssi Manual", 'type': COMMAND, 'command': 'man irssi' },
 	]},
 
-	{ 'title': "Nano", 'type': COMMAND, 'command': 'nano' },
-	{ 'title': "Mail", 'type': COMMAND, 'command': 'alpine' },
+	{ 'title': "nano", 'type': COMMAND, 'command': 'nano' },
+	{ 'title': "alpine", 'type': COMMAND, 'command': 'alpine' },
 	
-	{ 'title': "Feed Reader", 'type': MENU, 'subtitle': "Select RSS feed to read",'options': [
+	{ 'title': "newsbeuter", 'type': MENU, 'subtitle': "Select RSS feed to read",'options': [
 		{ 'title': "ABC Perth", 'type': COMMAND, 'command': 'rm ~/rss.txt && echo "http://www.abc.net.au/local/rss/perth/all.xml" >> ~/rss.txt && newsbeuter -u ~/rss.txt' },
 		{ 'title': "ABC Politics", 'type': COMMAND, 'command': 'rm ~/rss.txt && echo "http://www.abc.net.au/news/feed/1534/rss.xml" >> ~/rss.txt && newsbeuter -u ~/rss.txt' },
 		{ 'title': "ABC Sport", 'type': COMMAND, 'command': 'rm ~/rss.txt && echo "http://abc.net.au/sport/syndicate/sport_all.xml" >> ~/rss.txt && newsbeuter -u ~/rss.txt' },
@@ -51,8 +51,8 @@ menu_data = {
 		{ 'title': "CNN", 'type': COMMAND, 'command': 'rm ~/rss.txt && echo "http://rss.cnn.com/rss/edition.rss" >> ~/rss.txt && newsbeuter -u ~/rss.txt' },
 	]},
 	
-	{ 'title': "Web Browser", 'type': COMMAND, 'command': 'links' },
-	{ 'title': "IRC Client", 'type': COMMAND, 'command': 'irssi' },
+	{ 'title': "links", 'type': COMMAND, 'command': 'links' },
+	{ 'title': "irssi", 'type': COMMAND, 'command': 'irssi' },
 	{ 'title': "zsh", 'type': COMMAND, 'command': 'zsh' },
 	
 	{ 'title': "Options & Shutdown", 'type': MENU, 'subtitle': "Select shutdown option",'options': [
