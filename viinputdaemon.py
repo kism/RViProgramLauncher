@@ -17,20 +17,43 @@ class termcolour:
 # Figure out what to do on the keypresses
 def sendLetter(letter): 
 	global caps
+	global numb
 	print termcolour.GREEN + 'Sent ASCII Char:' + termcolour.WHITE
-	if caps == 0:
-		device.emit_click(getattr(uinput,letter))
-	if caps == 1:
-		caps = 0
-		device.emit_combo([
-			uinput.KEY_LEFTSHIFT,
-			getattr(uinput,letter),
-			])
-	if caps == 2:
+	if numb == True:
+		if letter == 'KEY_A':
+			device.emit_click(uinput.KEY_1)
+		if letter == 'KEY_B':
+			device.emit_click(uinput.KEY_2)		
+		if letter == 'KEY_C':
+			device.emit_click(uinput.KEY_3)	
+		if letter == 'KEY_D':
+			device.emit_click(uinput.KEY_4)
+		if letter == 'KEY_E':
+			device.emit_click(uinput.KEY_5)
+		if letter == 'KEY_F':
+			device.emit_click(uinput.KEY_6)
+		if letter == 'KEY_G':
+			device.emit_click(uinput.KEY_7)
+		if letter == 'KEY_H':
+			device.emit_click(uinput.KEY_8)
+		if letter == 'KEY_I':
+			device.emit_click(uinput.KEY_9)
+		if letter == 'KEY_J':
+			device.emit_click(uinput.KEY_0)
+	else:
+		if caps == 0:
+			device.emit_click(getattr(uinput,letter))
+		if caps == 1:
+			caps = 0
 			device.emit_combo([
-			uinput.KEY_LEFTSHIFT,
-			getattr(uinput,letter),
-			])
+				uinput.KEY_LEFTSHIFT,
+				getattr(uinput,letter),
+				])
+		if caps == 2:
+				device.emit_combo([
+				uinput.KEY_LEFTSHIFT,
+				getattr(uinput,letter),
+				])
 
 def f1(inProgram):
 	print termcolour.PINK + 'F1 Pressed' + termcolour.WHITE
@@ -285,7 +308,7 @@ else:
 	print termcolour.YELLOW + 'No args, what are you even doing?' + termcolour.WHITE
 	program = ''
 
-# Python-uinput is a quality Interface
+# Python-uinput is a quality Interface, To find key codes check /usr/include/linux/input.h
 device = uinput.Device([
 	uinput.KEY_A,
 	uinput.KEY_B,
@@ -369,6 +392,7 @@ print termcolour.GREEN + 'Serial device opened:' + termcolour.WHITE, ser.name
 
 # Mad Hacks go here
 caps = 0
+numb = False
 if program == 'newsbeuter':
 	time.sleep(2.0)
 	device.emit_click(uinput.KEY_R)
@@ -459,6 +483,7 @@ while 1:
 	if sbuf == '\x60':
 		device.emit_click(uinput.KEY_SPACE)
 		caps = 0
+		numb = 0
 
 	# Special Keys, All values are in hex
 	if sbuf == '\x40':
@@ -481,3 +506,9 @@ while 1:
 		else:
 			caps = caps + 1
 		print termcolour.GREEN + 'Caps:' + termcolour.WHITE, caps
+	if sbuf == '\x0F':
+		if numb == True:
+			numb = False
+		else:
+			numb = True
+		print termcolour.GREEN + 'Numb:' + termcolour.WHITE, numb
