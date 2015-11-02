@@ -512,23 +512,19 @@ while 1:
 	print 'Read =', sbuf
 	
 	# All values are in hex, not actuall ascii, lol python
-	# Function Keys, 
-	if sbuf == '\x81': #129
-		f1(program)
-	if sbuf == '\x82': #130
-		f2(program)
-	if sbuf == '\x83': #131
-		f3(program)
-	if sbuf == '\x84': #132
-		f4(program)
-	if sbuf == '\x85': #133
-		f5(program)
-	if sbuf == '\x86': #134
-		f6(program)
-	if sbuf == '\x87': #135
-		f7(program)
-	if sbuf == '\x88': #136
-		f8(program)
+	# Braille Modifier Characters
+	if sbuf == '\x01': # Caps
+		if caps > 1:
+			caps = 2
+		else:
+			caps = caps + 1
+		print termcolour.GREEN + 'Caps:' + termcolour.WHITE, caps
+	if sbuf == '\x0F': # Number
+		if numb == True:
+			numb = False
+		else:
+			numb = True
+		print termcolour.GREEN + 'Numb:' + termcolour.WHITE, numb
 	
 	# Regular Keys
 	if sbuf == '\x20':
@@ -594,21 +590,7 @@ while 1:
 		caps = 0
 		numb = 0
 
-	# Braille Modifiers
-	if sbuf == '\x01': # Caps
-		if caps > 1:
-			caps = 2
-		else:
-			caps = caps + 1
-		print termcolour.GREEN + 'Caps:' + termcolour.WHITE, caps
-	if sbuf == '\x0F': # Number
-		if numb == True:
-			numb = False
-		else:
-			numb = True
-		print termcolour.GREEN + 'Numb:' + termcolour.WHITE, numb
-
-	# Special Keys
+	# IBM Compatable PC Keys
 	if sbuf == '\x40':
 		device.emit_click(uinput.KEY_ESC)
 	if sbuf == '\x41':
@@ -627,3 +609,21 @@ while 1:
 		device.emit_click(uinput.KEY_PAGEUP)
 	if sbuf == '\x48':
 		device.emit_click(uinput.KEY_PAGEDOWN)
+
+	# Macro Keys
+	if sbuf == '\x81': #129
+		f1(program)
+	if sbuf == '\x82': #130
+		f2(program)
+	if sbuf == '\x83': #131
+		f3(program)
+	if sbuf == '\x84': #132
+		f4(program)
+	if sbuf == '\x85': #133
+		f5(program)
+	if sbuf == '\x86': #134
+		f6(program)
+	if sbuf == '\x87': #135
+		f7(program)
+	if sbuf == '\x88': #136
+		f8(program)
