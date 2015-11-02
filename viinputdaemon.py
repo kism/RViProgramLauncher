@@ -113,6 +113,9 @@ def f1(inProgram):
 		time.sleep(0.01)
 		device.emit_click(uinput.KEY_ENTER)
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Home'
+	if inProgram == 'man': # Help
+			device.emit_click(uinput.KEY_H)
+			print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Help'		
 
 def f2(inProgram):
 	print termcolour.PINK + 'F2 Pressed' + termcolour.WHITE
@@ -394,6 +397,9 @@ def f8(inProgram):
 				uinput.KEY_D,
 				])
 		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Quit'
+	if inProgram == 'man': # Quit
+		device.emit_click(uinput.KEY_Q)
+		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Quit'
 
 # Main Program
 print termcolour.PINK + '~ Daemon initialising ~' + termcolour.WHITE
@@ -455,6 +461,8 @@ device = uinput.Device([
 	uinput.KEY_LEFTALT,
 	uinput.KEY_LEFTSHIFT,
 	uinput.KEY_BACKSPACE,
+	uinput.KEY_PAGEDOWN,
+	uinput.KEY_PAGEUP,
 	uinput.KEY_UP,
 	uinput.KEY_LEFT,
 	uinput.KEY_RIGHT,
@@ -586,6 +594,20 @@ while 1:
 		caps = 0
 		numb = 0
 
+	# Braille Modifiers
+	if sbuf == '\x01': # Caps
+		if caps > 1:
+			caps = 2
+		else:
+			caps = caps + 1
+		print termcolour.GREEN + 'Caps:' + termcolour.WHITE, caps
+	if sbuf == '\x0F': # Number
+		if numb == True:
+			numb = False
+		else:
+			numb = True
+		print termcolour.GREEN + 'Numb:' + termcolour.WHITE, numb
+
 	# Special Keys
 	if sbuf == '\x40':
 		device.emit_click(uinput.KEY_ESC)
@@ -601,15 +623,7 @@ while 1:
 		device.emit_click(uinput.KEY_ENTER)
 	if sbuf == '\x46':
 		device.emit_click(uinput.KEY_BACKSPACE)
-	if sbuf == '\x01':
-		if caps > 1:
-			caps = 2
-		else:
-			caps = caps + 1
-		print termcolour.GREEN + 'Caps:' + termcolour.WHITE, caps
-	if sbuf == '\x0F':
-		if numb == True:
-			numb = False
-		else:
-			numb = True
-		print termcolour.GREEN + 'Numb:' + termcolour.WHITE, numb
+	if sbuf == '\x47':
+		device.emit_click(uinput.KEY_PAGEUP)
+	if sbuf == '\x48':
+		device.emit_click(uinput.KEY_PAGEDOWN)
