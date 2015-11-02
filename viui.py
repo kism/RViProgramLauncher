@@ -67,7 +67,6 @@ def runmenu(menu, parent):
 
 	# While enter key is not pressed
 	while x !=ord('\n'):
-		##########################
 		if pos != oldpos:
 			oldpos = pos
 			screen.addstr(2,2, menu['title'], curses.A_STANDOUT) # Title for this menu
@@ -105,12 +104,12 @@ def processmenu(menu, parent=None):
 			exitmenu = True
 		elif menu['options'][getin]['type'] == COMMAND:
 			# Prepare for command
-			os.system("sudo pkill -f python\ viinputdaemon"); # Move this somewhere nicer
+			os.system("sudo pkill -f python\ viinputdaemon"); # Stop daemon
 			curses.def_prog_mode() # Save menu status
 			os.system('reset')
 			screen.clear()
 	
-			# Run input daemon in background
+			# Run input daemon with new parameters
 			if 'newsbeuter' in menu['options'][getin]['command']:
 				subprocess.Popen(["nohup","sudo","python","viinputdaemon.py","newsbeuter","&"])
 			else:
@@ -120,7 +119,9 @@ def processmenu(menu, parent=None):
 			os.system(menu['options'][getin]['command'])
 			
 			# Reset Daemon
+			os.system("sudo pkill -f python\ viinputdaemon"); 
 			subprocess.Popen(["nohup","sudo","python","viinputdaemon.py","viui","&"])
+			os.system('clear')
 
 			# Cleanup
 			screen.clear()
@@ -137,7 +138,8 @@ def processmenu(menu, parent=None):
 # Main program
 # Setup
 os.system('touch ~/rss.txt')
-subprocess.Popen(["nohup","sudo","python","viinputdaemon.py","viui","&"])
+subprocess.Popen(["nohup","sudo","python","viinputdaemon.py","viui","&",">","/dev/null"])
+os.system('clear')
 # Run Menu
 processmenu(menu_data)
 # Cleanup
