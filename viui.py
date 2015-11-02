@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Based on: http://blog.skeltonnetworks.com/2010/03/python-curses-custom-menu/
-# by Matthew Bennett with changes by Andrew Scheller
-# A bunch of changes and optimisations for speakup done by Kieran Gee
+# Based on: http://blog.skeltonnetworks.com/2010/03/python-curses-custom-menu/ by Matthew Bennett with changes by Andrew Scheller
+# A tonne of changes and optimisations for speakup done by Kieran Gee
 # No idea what license, probably compatable with MIT ¯\_(ツ)_/¯
 
 import time
@@ -33,12 +32,12 @@ menu_data = {
 
 	{ 'title': "Open Help", 'type': MENU, 'subtitle': "Select shutdown option",'options': [
 		{'title': "viui Manual", 'type': COMMAND, 'command': 'man viui' },
+		{'title': "piespeakup Manual", 'type': COMMAND, 'command': 'man piespeakup' },
 		{'title': "nano Manual", 'type': COMMAND, 'command': 'man nano' },
 		{'title': "alpine Manual", 'type': COMMAND, 'command': 'man alpine' },
 		{'title': "newsbeuter Manual", 'type': COMMAND, 'command': 'man newsbeuter' },
 		{'title': "links Manual", 'type': COMMAND, 'command': 'man links' },
 		{'title': "irssi Manual", 'type': COMMAND, 'command': 'man irssi' },
-		{'title': "zsh Manual", 'type': COMMAND, 'command': 'man zsh' },
 	]},
 
 	{ 'title': "Nano", 'type': COMMAND, 'command': 'nano' },
@@ -150,7 +149,7 @@ def processmenu(menu, parent=None):
 # Main program
 # Setup
 os.system('touch ~/rss.txt')
-subprocess.Popen(["nohup","sudo","python","viinputdaemon.py","viui","&",">","/dev/null"])
+subprocess.Popen(["nohup","sudo","python","viinputdaemon.py","viui","&"])
 os.system('clear')
 # Run Menu
 processmenu(menu_data)
