@@ -33,7 +33,6 @@ menu_data = {
 'options':[
 	{ 'title': "Nano", 'type': COMMAND, 'command': 'nano' },
 	{ 'title': "Mail", 'type': COMMAND, 'command': 'alpine' },
-	{ 'title': "eBook Reader (Currently just nano)", 'type': COMMAND, 'command': 'nano' },
 	{ 'title': "Feed Reader", 'type': MENU, 'subtitle': "Select RSS feed to read",
 	'options': [
 		{ 'title': "ABC Perth", 'type': COMMAND, 'command': 'rm ~/rss.txt && echo "http://www.abc.net.au/local/rss/perth/all.xml" >> ~/rss.txt && newsbeuter -u ~/rss.txt' },
@@ -43,6 +42,7 @@ menu_data = {
 		{ 'title': "CNN", 'type': COMMAND, 'command': 'rm ~/rss.txt && echo "http://rss.cnn.com/rss/edition.rss" >> ~/rss.txt && newsbeuter -u ~/rss.txt' },
 	]},
 	{ 'title': "Web Browser", 'type': COMMAND, 'command': 'links' },
+	{ 'title': "IRC Client", 'type': COMMAND, 'command': 'irssi' },
 	{ 'title': "zsh", 'type': COMMAND, 'command': 'zsh' }, # may have issues
 	{ 'title': "Open Help", 'type': COMMAND, 'command': 'cmatrix' },
 	{ 'title': "Options & Shutdown", 'type': MENU, 'subtitle': "Select shutdown option",
@@ -67,7 +67,7 @@ def runmenu(menu, parent):
 
 	# While enter key is not pressed
 	while x !=ord('\n'):
-		os.system("sudo pkill -f python\ viinputdaemon"); # Move this somewhere nicer
+		##########################
 		if pos != oldpos:
 			oldpos = pos
 			screen.addstr(2,2, menu['title'], curses.A_STANDOUT) # Title for this menu
@@ -105,6 +105,7 @@ def processmenu(menu, parent=None):
 			exitmenu = True
 		elif menu['options'][getin]['type'] == COMMAND:
 			# Prepare for command
+			os.system("sudo pkill -f python\ viinputdaemon"); # Move this somewhere nicer
 			curses.def_prog_mode() # Save menu status
 			os.system('reset')
 			screen.clear()
@@ -117,7 +118,10 @@ def processmenu(menu, parent=None):
 	
 			# Run Program
 			os.system(menu['options'][getin]['command'])
-	
+			
+			# Reset Daemon
+			subprocess.Popen(["nohup","sudo","python","viinputdaemon.py","viui","&"])
+
 			# Cleanup
 			screen.clear()
 			curses.reset_prog_mode()
@@ -131,8 +135,12 @@ def processmenu(menu, parent=None):
 			exitmenu = True
 
 # Main program
+# Setup
 os.system('touch ~/rss.txt')
+subprocess.Popen(["nohup","sudo","python","viinputdaemon.py","viui","&"])
+# Run Menu
 processmenu(menu_data)
+# Cleanup
 curses.endwin() # Exits the cursers menu
 os.system('touch nohup.out && rm nohup.out') # Fix for sisuation where no program was run, remove the nohup output
 os.system('clear')

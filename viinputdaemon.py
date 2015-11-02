@@ -15,8 +15,9 @@ class termcolour:
     WHITE = '\033[0m'
 
 # Figure out what to do on the keypresses
-def sendLetter(letter): #
+def sendLetter(letter): 
 	global caps
+	print termcolour.GREEN + 'Sent ASCII Char:' + termcolour.WHITE
 	if caps == 0:
 		device.emit_click(getattr(uinput,letter))
 	if caps == 1:
@@ -30,11 +31,16 @@ def sendLetter(letter): #
 			uinput.KEY_LEFTSHIFT,
 			getattr(uinput,letter),
 			])
-	print termcolour.GREEN + 'Sent ASCII Char!' + termcolour.WHITE
 
 def f1(inProgram):
 	print termcolour.PINK + 'F1 Pressed' + termcolour.WHITE
 	print termcolour.GREEN + 'Program:' + termcolour.WHITE, inProgram
+	if inProgram == 'viui':  # Open Help
+		device.emit_click(uinput.KEY_1)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_ENTER)
+		time.sleep(0.01)
+		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'F1'
 	if inProgram == 'nano':  # Open Help
 		device.emit_combo([
 			uinput.KEY_LEFTCTRL,
@@ -75,6 +81,12 @@ def f1(inProgram):
 def f2(inProgram):
 	print termcolour.PINK + 'F2 Pressed' + termcolour.WHITE
 	print termcolour.GREEN + 'Program:' + termcolour.WHITE, inProgram
+	if inProgram == 'viui':  # Menu Select
+		device.emit_click(uinput.KEY_2)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_ENTER)
+		time.sleep(0.01)
+		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'F2'
 	if inProgram == 'nano':  # Open File
 		device.emit_combo([
 			uinput.KEY_LEFTCTRL,
@@ -110,6 +122,12 @@ def f2(inProgram):
 def f3(inProgram):
 	print termcolour.PINK + 'F3 Pressed' + termcolour.WHITE
 	print termcolour.GREEN + 'Program:' + termcolour.WHITE, inProgram
+	if inProgram == 'viui':  # Menu Select
+		device.emit_click(uinput.KEY_3)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_ENTER)
+		time.sleep(0.01)
+		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'F3'	
 	if inProgram == 'nano': # Save file
 		device.emit_combo([
 			uinput.KEY_LEFTCTRL,
@@ -129,6 +147,12 @@ def f3(inProgram):
 def f4(inProgram):
 	print termcolour.PINK + 'F4 Pressed' + termcolour.WHITE
 	print termcolour.GREEN + 'Program:' + termcolour.WHITE, inProgram
+	if inProgram == 'viui':  # Menu Select
+		device.emit_click(uinput.KEY_4)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_ENTER)
+		time.sleep(0.01)
+		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'F4'	
 	if inProgram == 'nano': # Cancel
 		device.emit_combo([
 			uinput.KEY_LEFTCTRL,
@@ -153,6 +177,12 @@ def f4(inProgram):
 def f5(inProgram):
 	print termcolour.PINK + 'F5 Pressed' + termcolour.WHITE
 	print termcolour.GREEN + 'Program:' + termcolour.WHITE, inProgram
+	if inProgram == 'viui':  # Menu Select
+		device.emit_click(uinput.KEY_5)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_ENTER)
+		time.sleep(0.01)
+		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'F5'	
 	if inProgram == 'nano': # Cut
 		device.emit_combo([
 			uinput.KEY_LEFTCTRL,
@@ -169,6 +199,12 @@ def f5(inProgram):
 def f6(inProgram):
 	print termcolour.PINK + 'F6 Pressed' + termcolour.WHITE
 	print termcolour.GREEN + 'Program:' + termcolour.WHITE, inProgram
+	if inProgram == 'viui':  # Menu Select
+		device.emit_click(uinput.KEY_6)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_ENTER)
+		time.sleep(0.01)
+		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'F6'
 	if inProgram == 'nano': # Uncut
 		device.emit_combo([
 			uinput.KEY_LEFTCTRL,
@@ -185,6 +221,12 @@ def f6(inProgram):
 def f7(inProgram):
 	print termcolour.PINK + 'F7 Pressed' + termcolour.WHITE
 	print termcolour.GREEN + 'Program:' + termcolour.WHITE, inProgram
+	if inProgram == 'viui':  # Menu Select
+		device.emit_click(uinput.KEY_7)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_ENTER)
+		time.sleep(0.01)
+		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'F7'	
 	if inProgram == 'nano': # Find
 		device.emit_combo([
 			uinput.KEY_LEFTCTRL,
@@ -204,6 +246,12 @@ def f7(inProgram):
 def f8(inProgram):
 	print termcolour.PINK + 'F8 Pressed' + termcolour.WHITE
 	print termcolour.GREEN + 'Program:' + termcolour.WHITE, inProgram
+	if inProgram == 'viui':  # Menu Select
+		device.emit_click(uinput.KEY_8)
+		time.sleep(0.01)
+		device.emit_click(uinput.KEY_ENTER)
+		time.sleep(0.01)
+		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'F8'	
 	if inProgram == 'nano': # Exit menu or program
 		device.emit_combo([
 			uinput.KEY_LEFTCTRL,
@@ -303,6 +351,16 @@ device = uinput.Device([
 	uinput.KEY_F10,
 	uinput.KEY_F11,
 	uinput.KEY_F12,
+	uinput.KEY_1,
+	uinput.KEY_2,
+	uinput.KEY_3,
+	uinput.KEY_4,
+	uinput.KEY_5,
+	uinput.KEY_6,
+	uinput.KEY_7,
+	uinput.KEY_8,
+	uinput.KEY_9,
+	uinput.KEY_0,	
     ])
 
 # Open serial decice
@@ -323,7 +381,7 @@ while 1:
 	print 'Buffer Queue =', ser.inWaiting()
 	print 'Read =', sbuf
 	
-	# Function Keys
+	# Function Keys, All values are in hex
 	if sbuf == '\x81': #129
 		f1(program)
 	if sbuf == '\x82': #130
@@ -341,7 +399,7 @@ while 1:
 	if sbuf == '\x88': #136
 		f8(program)
 	
-	# Regular Keys
+	# Regular Keys, All values are in hex
 	if sbuf == '\x20':
 		sendLetter('KEY_A')
 	if sbuf == '\x30':
@@ -402,7 +460,7 @@ while 1:
 		device.emit_click(uinput.KEY_SPACE)
 		caps = 0
 
-	# Special Keys
+	# Special Keys, All values are in hex
 	if sbuf == '\x40':
 		device.emit_click(uinput.KEY_ESC)
 	if sbuf == '\x41':
