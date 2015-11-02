@@ -44,9 +44,11 @@ sudo visudo
 
 ## Simulating the serial input device
 
-The serial connection will need to be 115200 baud, No Parity, 8 Data Bits, 1 Stop Bit, No Flow control
+The serial connection will need to be 115200 baud, No Parity, 8 Data Bits, 1 Stop Bit, No Flow control. On the device running the daemon /dev/ttyUSB0 will be used.
 
-Over serial send values 129 - 136, you can use any program that can output the correct bits
+Over serial send values 129 - 136 to trigger the macros, see SERIAL.md for documentation of the serial input standard.
+
+You can use any program to test out viinputdaemon.py that can output the correct bits.
 
 On windows you can use [Realterm](http://realterm.sourceforge.net/index.html#downloads_Download)
 
