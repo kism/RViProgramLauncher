@@ -51,3 +51,22 @@ Over serial send values 129 - 136, you can use any program that can output the c
 On windows you can use [Realterm](http://realterm.sourceforge.net/index.html#downloads_Download)
 
 On linux you can use Minicom
+
+## Installing the man page
+
+```bash
+sudo mkdir /usr/local/man/man1
+sudo cp viui.1 /usr/local/man/man1
+```
+
+## Function key functionality list
+
+| Program    | F1          | F2         | F3         | F4         | F5      | F6              | F7              | F8                     |
+|------------|-------------|------------|------------|------------|---------|-----------------|-----------------|------------------------|
+| viui       | help menu   | nano       | alpine     | newsbeuter | links   | irssi           | zsh             | option & shutdown menu |
+| nano       | help        | open file  | save file  | cancel     | cut     | uncut           | find            | quit                   |
+| alpine     | help        | open index | compose    | back       | journal |                 | setup           | quit                   |
+| newsbeuter | help        | open entry | save story |            | reload  | next unread     | open in browser | quit                   |
+| links      | help        | go to url  | menu       | cancel     |         |                 | find in page    | quit                   |
+| irssi      | help        | /connect   | /join      | /part      | /query  | previous window | next window     | quit                   |
+| zsh        | home folder | play       |            | ^c         |         |                 |                 | quit                   |
