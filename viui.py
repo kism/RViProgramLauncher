@@ -32,12 +32,12 @@ menu_data = {
 
 	{ 'title': "Open Help", 'type': MENU, 'subtitle': "Select shutdown option",'options': [
 		{'title': "viui Manual", 'type': COMMAND, 'command': 'man viui' },
-		{'title': "piespeakup Manual", 'type': COMMAND, 'command': 'man piespeakup' },
 		{'title': "nano Manual", 'type': COMMAND, 'command': 'man nano' },
 		{'title': "alpine Manual", 'type': COMMAND, 'command': 'man alpine' },
 		{'title': "newsbeuter Manual", 'type': COMMAND, 'command': 'man newsbeuter' },
 		{'title': "links Manual", 'type': COMMAND, 'command': 'man links' },
 		{'title': "irssi Manual", 'type': COMMAND, 'command': 'man irssi' },
+		{'title': "piespeakup Manual", 'type': COMMAND, 'command': 'man piespeakup' },
 	]},
 
 	{ 'title': "nano", 'type': COMMAND, 'command': 'nano' },
