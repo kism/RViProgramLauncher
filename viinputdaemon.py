@@ -480,6 +480,8 @@ while 1:
 		device.emit_click(uinput.KEY_COMMA)
 	if sbuf == '\x13':
 		device.emit_click(uinput.KEY_DOT)
+	if sbuf == '\x0C':
+		device.emit_click(uinput.KEY_SLASH)
 	if sbuf == '\x60':
 		device.emit_click(uinput.KEY_SPACE)
 		caps = 0
