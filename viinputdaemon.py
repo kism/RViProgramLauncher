@@ -172,7 +172,7 @@ def f2(inProgram):
 		device.emit_click(uinput.KEY_Y)
 		time.sleep(0.01)
 		device.emit_click(uinput.KEY_SPACE)
-		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Play '
+		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Play'
 
 def f3(inProgram):
 	print termcolour.PINK + 'F3 Pressed' + termcolour.WHITE
@@ -349,7 +349,7 @@ def f7(inProgram):
 				uinput.KEY_CTRL,
 				uinput.KEY_N,
 				])
-		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Next window'
+		print termcolour.GREEN + 'Command:' + termcolour.WHITE, 'Next Window'
 
 def f8(inProgram):
 	print termcolour.PINK + 'F8 Pressed' + termcolour.WHITE
