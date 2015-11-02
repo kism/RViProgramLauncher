@@ -29,24 +29,34 @@ COMMAND = "command"
 EXITMENU = "exitmenu"
 
 menu_data = {
-'title': "VIUI Launcher", 'type': MENU, 'subtitle': "Please select an option...",
-'options':[
+'title': "VIUI Launcher", 'type': MENU, 'subtitle': "Please select an option...",'options':[
+
+	{ 'title': "Open Help", 'type': MENU, 'subtitle': "Select shutdown option",'options': [
+		{'title': "viui Manual", 'type': COMMAND, 'command': 'man viui' },
+		{'title': "nano Manual", 'type': COMMAND, 'command': 'man nano' },
+		{'title': "alpine Manual", 'type': COMMAND, 'command': 'man alpine' },
+		{'title': "newsbeuter Manual", 'type': COMMAND, 'command': 'man newsbeuter' },
+		{'title': "links Manual", 'type': COMMAND, 'command': 'man links' },
+		{'title': "irssi Manual", 'type': COMMAND, 'command': 'man irssi' },
+		{'title': "zsh Manual", 'type': COMMAND, 'command': 'man zsh' },
+	]},
+
 	{ 'title': "Nano", 'type': COMMAND, 'command': 'nano' },
 	{ 'title': "Mail", 'type': COMMAND, 'command': 'alpine' },
-	{ 'title': "Feed Reader", 'type': MENU, 'subtitle': "Select RSS feed to read",
-	'options': [
+	
+	{ 'title': "Feed Reader", 'type': MENU, 'subtitle': "Select RSS feed to read",'options': [
 		{ 'title': "ABC Perth", 'type': COMMAND, 'command': 'rm ~/rss.txt && echo "http://www.abc.net.au/local/rss/perth/all.xml" >> ~/rss.txt && newsbeuter -u ~/rss.txt' },
 		{ 'title': "ABC Politics", 'type': COMMAND, 'command': 'rm ~/rss.txt && echo "http://www.abc.net.au/news/feed/1534/rss.xml" >> ~/rss.txt && newsbeuter -u ~/rss.txt' },
 		{ 'title': "ABC Sport", 'type': COMMAND, 'command': 'rm ~/rss.txt && echo "http://abc.net.au/sport/syndicate/sport_all.xml" >> ~/rss.txt && newsbeuter -u ~/rss.txt' },
 		{ 'title': "Huffington Post", 'type': COMMAND, 'command': 'rm ~/rss.txt && echo "http://www.huffingtonpost.com/feeds/news.xml" >> ~/rss.txt && newsbeuter -u ~/rss.txt' },
 		{ 'title': "CNN", 'type': COMMAND, 'command': 'rm ~/rss.txt && echo "http://rss.cnn.com/rss/edition.rss" >> ~/rss.txt && newsbeuter -u ~/rss.txt' },
 	]},
+	
 	{ 'title': "Web Browser", 'type': COMMAND, 'command': 'links' },
 	{ 'title': "IRC Client", 'type': COMMAND, 'command': 'irssi' },
-	{ 'title': "zsh", 'type': COMMAND, 'command': 'zsh' }, # may have issues
-	{ 'title': "Open Help", 'type': COMMAND, 'command': 'cmatrix' },
-	{ 'title': "Options & Shutdown", 'type': MENU, 'subtitle': "Select shutdown option",
-	'options': [
+	{ 'title': "zsh", 'type': COMMAND, 'command': 'zsh' },
+	
+	{ 'title': "Options & Shutdown", 'type': MENU, 'subtitle': "Select shutdown option",'options': [
 		{'title': "Update System Packages", 'type': COMMAND, 'command': 'sudo apt-get update && sudo apt-get upgrade' },
 		{'title': "Shutdown", 'type': COMMAND, 'command': 'sudo shutdown -h now' },
 		{'title': "Restart", 'type': COMMAND, 'command': 'sudo shutdown -r now' },
@@ -112,6 +122,8 @@ def processmenu(menu, parent=None):
 			# Run input daemon with new parameters
 			if 'newsbeuter' in menu['options'][getin]['command']:
 				subprocess.Popen(["nohup","sudo","python","viinputdaemon.py","newsbeuter","&"])
+			elif 'man ' in menu['options'][getin]['command']:
+				subprocess.Popen(["nohup","sudo","python","viinputdaemon.py","man","&"])
 			else:
 				subprocess.Popen(["nohup","sudo","python","viinputdaemon.py",menu['options'][getin]['command'],"&"])
 	
