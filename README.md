@@ -72,3 +72,11 @@ sudo cp viui.1 /usr/local/man/man1
 | links      | help        | go to url  | menu       | cancel     |         |                 | find in page    | quit                   |
 | irssi      | help        | /connect   | /join      | /part      | /query  | previous window | next window     | quit                   |
 | zsh        | home folder | play       |            | ^c         |         |                 |                 | quit                   |
+
+# Running ViUi
+
+ViUi can be run by entering the command
+
+```bash
+python viui.py
+```
